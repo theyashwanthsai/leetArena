@@ -10,10 +10,10 @@ const recentAcSubmissions = `query recentAcSubmissions($username: String!, $limi
     }
     }`
 
-const getSubmissions = async (req, res) => {
-    const query = recentAcSubmissions;
-    const data = await fetchData(query, {username: "theyashwanthsai", limit: 3});
-    res.json(data);
+const getSubmissions = async (username) => {
+        const query = recentAcSubmissions;
+        const data = await fetchData(query, { username, limit: 3 });
+        return data;
 }
 
 module.exports = getSubmissions;

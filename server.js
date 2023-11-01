@@ -22,10 +22,10 @@ const difficultyPoints = {
 };
 
 const getSub = async (req, res) => {
-  const query = recentSubmissionsQuery;
-  let limit = 3;
+  // const query = recentSubmissionsQuery;
+  // let limit = 3;
   for (let i = 0; i < users.length; i++) {
-    const jdata = await fetchGraphQLData(query, { username: users[i], limit });
+    const jdata = await getSubmissions(users[i]);
     const solvedProblems = jdata.data.recentAcSubmissionList.map(submission => submission.title);
 
     const userScore = solvedProblems.reduce((totalScore, problemTitle) => {
@@ -52,11 +52,6 @@ const getSub = async (req, res) => {
 
 app.get("/start", getSub)
 
-
-
-app.listen(PORT, () => {
-    console.log(`🚀 Server is started at PORT : ${PORT}`);
-    });
 
 
 app.listen(PORT, () => {
