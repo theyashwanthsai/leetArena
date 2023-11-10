@@ -27,7 +27,7 @@ const getSub = async (req, res) => {
     for (let i = 0; i < users.length; i++) {
       const jdata = await getSubmissions(users[i]);
       const solvedProblems = jdata.data.recentAcSubmissionList.map(submission => submission.title);
-  
+
       const userScore = solvedProblems.reduce((totalScore, problemTitle) => {
           const problem = problems.find(p => p.Name === problemTitle);
           if (problem) {
@@ -35,12 +35,12 @@ const getSub = async (req, res) => {
         }
           return totalScore;
       }, 0);
-  
+
       const userTime = jdata.data.recentAcSubmissionList[0].timestamp;
-  
+
       leaderboard.push({ username: users[i], score: userScore, time: userTime });
     }
-      
+
       leaderboard.sort((a, b) => {
       if (a.score === b.score) {
           return b.time - a.time;
@@ -48,15 +48,13 @@ const getSub = async (req, res) => {
       return b.score - a.score;
       });
       console.log(leaderboard);
-      // res.json(leaderboard);
-      leaderboard = []
 
+      leaderboard = []
 }
 
-const leaderboardUpdateInterval = 10000;
+const leaderboardUpdateInterval = 30000;
 
 setInterval(getSub, leaderboardUpdateInterval);
-
 
 app.get("/start", (req, res) => {
   res.json(leaderboard);
