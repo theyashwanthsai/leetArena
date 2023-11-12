@@ -1,6 +1,6 @@
 # leetArena
 ### Overview
-Leetcode Room Contest is a collaborative coding platform where users can create custom rooms, select LeetCode questions, and compete with their friends. This project is built using Node.js for the backend and HTML for the frontend, with Socket.IO facilitating real-time communication between users in the same room.
+LeetArena is a platform where users can create custom rooms, select LeetCode questions, and compete with their friends. This project is built using Node.js for the backend and HTML for the frontend, with Socket.IO facilitating real-time communication between users in the same room.
 
 ### Features
 - Create and Join Rooms: Users can create custom rooms and share the room code with friends. They can also join existing rooms using the provided room code.
