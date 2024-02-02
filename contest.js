@@ -1,11 +1,4 @@
-const express = require('express');
 const getSubmissions = require('./api/api')
-
-
-
-const app = express();
-const PORT = process.env.PORT || 4000;
-
 
 let leaderboard = [];
 const users = ["theyashwanthsai", "xzist23", "varunmuthannaka", "yuvftw"];
@@ -21,7 +14,6 @@ const difficultyPoints = {
   Medium: 2,
   Hard: 3,
 };
-
 
 const getSub = async (req, res) => {
     for (let i = 0; i < users.length; i++) {
@@ -55,11 +47,3 @@ const getSub = async (req, res) => {
 const leaderboardUpdateInterval = 30000;
 
 setInterval(getSub, leaderboardUpdateInterval);
-
-app.get("/start", (req, res) => {
-  res.json(leaderboard);
-});
-
-app.listen(PORT, () => {
-    console.log(`Server is started at : ${PORT}`);
-});

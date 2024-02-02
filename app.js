@@ -2,16 +2,26 @@ const express = require('express');
 const http = require('http');
 const socketIo = require('socket.io');
 // const api = require('leetapi');
+const getSubmissions = require('./api/api')
+
 const app = express();
 const server = http.createServer(app);
+
 const io = socketIo(server);
-const getSubmissions = require('./api/api')
-app.use(express.static('public')); // Serve static files from the 'public' directory
+
+
+
+app.use(express.static('public'));
+
+
 
 const rooms = new Map();
 const users ={}
 const leaderboard = {};
 // const problems = {};
+
+
+
 io.on('connection', (socket) => {
 
   socket.on('join', ({room, name}) => {
@@ -50,6 +60,9 @@ io.on('connection', (socket) => {
     socket.room = room;
     // console.log(users[socket.room]);
 
+
+
+    // todo: add a method to retrieve probelms and difficulty points for each problem
     const problems = [
       {
         Name: "Find Mode in Binary Search Tree",
@@ -93,8 +106,7 @@ io.on('connection', (socket) => {
     
       // Store the leaderboard array in the global leaderboard object
       leaderboard[socket.room] = lb;
-    
-      // Log the current leaderboard for the room
+
       console.log(leaderboard[socket.room]);
       io.to(socket.room).emit('updateLeaderboard', leaderboard[socket.room]);
     };
