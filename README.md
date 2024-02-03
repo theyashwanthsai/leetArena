@@ -21,6 +21,6 @@ LeetArena is a platform where users can create custom rooms, select LeetCode que
 
 # Todo
 - [ ] Add timer
-- [ ] Refresh problem
-- [ ] custom problemset (soon)
+- [x] Refresh problem
+- [x] custom problemset (soon)
 - [ ] Tests
