@@ -10,6 +10,10 @@
     "type": "git",
     "url": "git+https://github.com/theyashwanthsai/leetArena.git"
   },
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^4.1.2"
+  },
   "keywords": [
     "socketio",
     "real",
@@ -20,5 +24,6 @@
   "bugs": {
     "url": "https://github.com/theyashwanthsai/leetArena/issues"
   },
-  "homepage": "https://github.com/theyashwanthsai/leetArena#readme"
+  "homepage": "https://github.com/theyashwanthsai/leetArena#readme",
+  "devDependencies": {}
 }
