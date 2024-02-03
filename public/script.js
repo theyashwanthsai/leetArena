@@ -94,7 +94,7 @@ document.getElementById('ready').addEventListener('click', () => {
 
 document.getElementById('start').addEventListener('click', () => {
     room = document.getElementById('room').value;
-    socket.emit('contest', room)
+    socket.emit('contest', {room, problems: problemsArray})
 })
 
 document.getElementById('end').addEventListener('click', () => {

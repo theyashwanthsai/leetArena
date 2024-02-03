@@ -56,19 +56,19 @@ io.on('connection', (socket) => {
     // console.log(users);
   });
 
-  socket.on('contest', (room) => {
+  socket.on('contest', ({room, problems}) => {
     socket.room = room;
     // console.log(users[socket.room]);
-
-
+    socket.problems = problems;
+    console.log(problems)
 
     // todo: add a method to retrieve probelms and difficulty points for each problem
-    const problems = [
-      {
-        Name: "Find Mode in Binary Search Tree",
-        Difficulty: "Easy"
-      }
-    ];
+    // const problems = [
+    //   {
+    //     Name: "Find Mode in Binary Search Tree",
+    //     Difficulty: "Easy"
+    //   }
+    // ];
 
     const difficultyPoints = {
       Easy: 1,
