@@ -38,6 +38,7 @@ const chat = document.getElementById('chat');
 
 document.getElementById('create').addEventListener('click', () => {
     const name = document.getElementById('name').value;
+    console.log(name)
     room = document.getElementById('room').value;
 
     socket.emit('join', { room, name });
@@ -113,7 +114,8 @@ socket.on('updateLeaderboard', (updatedLeaderboard) => {
     // Create a table to display the leaderboard
     const table = document.createElement('table');
     table.border = '1';
-
+    table.classList.add("table");
+    // class="table table-bordered border-primary"
     const headerRow = table.insertRow();
     const usernameHeader = headerRow.insertCell(0);
     const scoreHeader = headerRow.insertCell(1);
