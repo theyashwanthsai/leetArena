@@ -61,6 +61,32 @@ document.getElementById('send').addEventListener('click', () => {
 });
 
 
+const problemsArray = [];
+
+function setDifficulty(value) {
+    document.getElementById('difficultyDropdown').innerText = value;
+}
+
+document.getElementById('addP').addEventListener('click', () => {
+    const problemName = document.getElementById('problem').value
+    const difficulty = document.getElementById('difficultyDropdown').innerText.trim();
+    console.log(problemName)
+    console.log(difficulty)
+    if (problemName !== '' && difficulty !== '') {
+        const newProblem = { Name: problemName, Difficulty: difficulty };
+        problemsArray.push(newProblem);
+
+        console.log('Updated Problems Array:', problemsArray);
+
+        document.getElementById('message').value = '';
+        document.getElementById('difficultyDropdown').innerText = 'Difficulty';
+    }
+    else {
+        alert('Please enter a problem name and select a difficulty.');
+    } 
+}
+)
+
 document.getElementById('ready').addEventListener('click', () => {
     room = document.getElementById('room').value;
     socket.emit('ready', room)
@@ -105,7 +131,6 @@ socket.on('updateLeaderboard', (updatedLeaderboard) => {
     });
 
     
-    // Function to add leaderboard to the UI
     function addLeaderboard(leaderboardData) {
 
     const leaderboardElement = document.getElementById('leaderboard');
