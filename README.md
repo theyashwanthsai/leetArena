@@ -19,4 +19,7 @@ LeetArena is a platform where users can create custom rooms, select LeetCode que
 - [ ] Add timer
 - [x] Refresh problem
 - [x] custom problemset (soon)
+- [ ] empty room or username issue
+- [ ] ready and start button
+- [ ] after start, the questions added should be displayed
 - [ ] Tests
