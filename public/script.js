@@ -93,8 +93,16 @@ document.getElementById('ready').addEventListener('click', () => {
 })
 
 document.getElementById('start').addEventListener('click', () => {
+    // console.log(problemsArray);
+    if (problemsArray.length === 0){
+        alert('Please enter problem and start again')
+        return;
+    }
     room = document.getElementById('room').value;
     socket.emit('contest', {room, problems: problemsArray})
+    
+    document.getElementById("inputproblems").style.display = 'none';
+    updateProblemList(problemsArray);
 })
 
 document.getElementById('end').addEventListener('click', () => {
@@ -128,15 +136,12 @@ socket.on('updateLeaderboard', (updatedLeaderboard) => {
     console.log('Updated Leaderboard:', updatedLeaderboard);
 
     addLeaderboard(updatedLeaderboard);
-    });
+});
 
     
-    function addLeaderboard(leaderboardData) {
-
+function addLeaderboard(leaderboardData) {
     const leaderboardElement = document.getElementById('leaderboard');
     leaderboardElement.innerHTML = '';
-        
-    // Create a table to display the leaderboard
     const table = document.createElement('table');
     table.border = '1';
     table.classList.add("table");
@@ -148,8 +153,6 @@ socket.on('updateLeaderboard', (updatedLeaderboard) => {
     usernameHeader.innerHTML = '<b>Username</b>';
     scoreHeader.innerHTML = '<b>Score</b>';
     // timeHeader.innerHTML = '<b>Time</b>';
-        
-
     leaderboardData.forEach((entry, index) => {
         const row = table.insertRow();
         const usernameCell = row.insertCell(0);
@@ -161,6 +164,30 @@ socket.on('updateLeaderboard', (updatedLeaderboard) => {
         // timeCell.innerHTML = entry.time;
     });
     
-    // Append the table to the leaderboard element
     leaderboardElement.appendChild(table);
-    }
+}
+
+
+function updateProblemList(problemsArray) {
+    const plist = document.getElementById("problem-list-container");
+    plist.innerHTML = '';
+    const table = document.createElement('table');
+    table.border = '1';
+    table.classList.add("table");
+    const headerRow = table.insertRow();
+    const nameHeader = headerRow.insertCell(0);
+    const diffHeader = headerRow.insertCell(1);
+    nameHeader.innerHTML = '<b>Name</b>';
+    diffHeader.innerHTML = '<b>Difficulty</b>';
+    problemsArray.forEach((entry, index) => {
+        const row = table.insertRow();
+        const namenameCell = row.insertCell(0);
+        const diffCell = row.insertCell(1);
+        console.log("btt");
+        namenameCell.innerHTML = entry.Name;
+        diffCell.innerHTML = entry.Difficulty;
+        console.log("btt");
+    })
+    plist.appendChild(table);
+    plist.style.display = 'block';
+}

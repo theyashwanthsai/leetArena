@@ -43,9 +43,10 @@
         <button id="send" class="btn btn-outline-info" type="button" >Send</button>
       </div>
       <br>
-      <h2>Select Problems</h2>
+      <h2>Problemset</h2>
         
-      <div class="input-group mb-3">
+      <div class="input-group mb-3" id="inputproblems">
+        
         <input id="problem" type="text" class="form-control" placeholder="Find Mode in Binary Search Tree" aria-label="Recipient's username" aria-describedby="button-addon2" required>
 
         <div class="dropdown">
@@ -62,6 +63,9 @@
         <button id="addP" class="btn btn-outline-info" type="button" >Add</button>
       </div>
 
+      <div id="problem-list-container" style="display: none;">
+      </div>
+
       <br>
       <button id="ready" type="button" class="btn btn-outline-warning">Get Ready</button>
       <br>
@@ -74,7 +78,9 @@
       <br>
       
     </div>
-  
+
+    
+
     <div id="leaderboard"></div>
   
     <script src="/socket.io/socket.io.js"></script>
