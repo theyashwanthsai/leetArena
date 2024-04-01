@@ -21,6 +21,8 @@ LeetArena is a platform where users can create custom rooms, select LeetCode que
 - [x] custom problemset (soon)
 - [ ] empty room or username issue
 - [ ] ready and start button
+- [ ] make mobile responsive
 - [x] after start, the questions added should be displayed
+- [ ] bug - Chat function, collaboratively add problemsSet
 - [ ] if one presses start, does the leaderboard show to everyone? even those who are not participating?
 - [ ] Tests
